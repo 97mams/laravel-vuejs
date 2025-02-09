@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Laravel</title>
-
+    @vite(['resources/css/app.css'])
     @vite(['resources/js/app.ts'])
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased dark:bg-black dark:text-white/50" id="App">
+<body class="with-full h-screen" id="App">
     @inertia
 </body>
 
