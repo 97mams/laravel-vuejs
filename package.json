@@ -18,5 +18,8 @@
         "build": "vite build",
         "dev": "vite"
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "@inertiajs/vue3": "^2.0.3"
+    }
 }
