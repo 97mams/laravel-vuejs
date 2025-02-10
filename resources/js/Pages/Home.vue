@@ -3,30 +3,30 @@
         <Card>
         <CardHeader>
             <CardTitle>
-                Todo liste
+                Counter :
+                    {{ counter }}
             </CardTitle>
         </CardHeader>
         <CardContent>
-            <Label>Nom</Label>
-            <Input type="text" v-model="name"/>
-            <Button class="mt-2">Ajouter</Button>
+            <template v-for=" user in users">
+                <h1>{{user.name}}</h1>
+                <userList :name="user.name" :age="user.age"/>
+            </template>
+            <Button @click="counter++">Increment</Button>
         </CardContent>
     </Card>
-    <div>
-        <h1>{{user.name}}</h1>
-    </div>
     </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { Card,CardContent,CardTitle,CardHeader } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button'
+import { ref } from 'vue';
+import userList from '@/components/userList.vue';
+const counter = ref(0)
 
-defineProps({user: Array})
+const user = [{name:'mamisoa', age: 28}, {name:"santatra", age:29}]
 
-console.log(items);
-
+const users = ref(user)
 
 </script>
