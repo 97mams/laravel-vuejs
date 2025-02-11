@@ -1,5 +1,7 @@
-<template class="w-full flex flex-col gap-4 pt-8">
-    <Header />
+<template>
+    <div class="w-full flex flex-col justify-center gap-4 pt-8">
+        <Header />
+    </div>
 </template>
 
 <script setup lang="ts">
