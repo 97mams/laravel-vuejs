@@ -1,5 +1,5 @@
 <template>
-    <div class="w-[500px] m-auto">
+    <div class="w-[500px] m-auto sticky">
         <Card>
             <CardHeader>
                 <CardTitle>
