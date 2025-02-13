@@ -4,7 +4,6 @@
         <Task :task="tasks"  class="flex1"/>
         <div class="border border-r border-border h-screen"></div>
         <TaskCompleted  class="flex1"/>
-        
     </div>
 </template>
 
@@ -14,7 +13,7 @@ import Task from '@/components/Task.vue';
 import { defineProps } from 'vue';
 import TaskCompleted from '@/components/TaskCompleted.vue';
 defineProps({
-    tasks:Object,
+    tasks:Array<Object> ,
 })
 
 </script>

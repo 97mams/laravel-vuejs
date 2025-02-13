@@ -5,10 +5,20 @@
             Ny asako
         </a>
     </div>
+    <form action="" v-on:submit.prevent="form.post('/task')" class="flex max-w-md py-2 gap-2">
+        <Input placeholder="asa vaovao" type="text" v-model="form.content"/>
+        <Button>Alefa</Button>
+    </form>
 </template>
 
-<script setup lang="ts">
-    import { Link2Icon } from 'lucide-vue-next';
+<script setup>
+import { Link2Icon } from 'lucide-vue-next';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
+import { useForm } from '@inertiajs/vue3';
 
-//
+    const form = useForm({
+        content: null
+    })
+
 </script>

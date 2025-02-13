@@ -16,10 +16,8 @@ import { Card,CardTitle,CardHeader, CardContent } from './ui/card';
     import { Link } from 'lucide-vue-next';
 
     const tasks = defineProps<{
-        task: Object | undefined
+        task: Array<Object> | undefined
     }>()
     const renderTask = ref<[] |Object>()
-        renderTask.value = tasks.task
-
-        
+    renderTask.value = tasks.task
 </script>
