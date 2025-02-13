@@ -4,19 +4,22 @@
                 <Link class="text-primary/30"/>
                 Lisitriny asa rehetra
             </a>
-            <ul v-for="task in tasks">
-                <li :key="task.id">{{ task.content }}</li>
+            <ul v-for="task in renderTask">
+                <li :key="task.id">{{ task.content}}</li>
             </ul>
     </div>
 </template>
 
 <script setup lang="ts">
-    import { Card,CardTitle,CardHeader, CardContent } from './ui/card';
+    import { ref } from 'vue';
+import { Card,CardTitle,CardHeader, CardContent } from './ui/card';
     import { Link } from 'lucide-vue-next';
-defineProps(
-            {
-                tasks:Object
-            }
-    )
+
+    const tasks = defineProps<{
+        task: Object | undefined
+    }>()
+    const renderTask = ref<[] |Object>()
+        renderTask.value = tasks.task
+
         
 </script>
