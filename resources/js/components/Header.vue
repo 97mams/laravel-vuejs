@@ -1,23 +1,14 @@
 <template>
-    <div class="w-[500px] m-auto sticky">
-        <Card>
-            <CardHeader>
-                <CardTitle>
-                    Ireo asa
-            </CardTitle>
-        </CardHeader>
-        <CardContent class="flex gap-2 items-center">
-                        <Input placeholder="asa vaovao"/>
-                    <Button>Ampiditra</Button> 
-        </CardContent>
-    </Card>
-</div>
+    <div class="w-full border-b h-12 flex border-border items-center sticky px-8">
+        <a href="#" class="flex items-center scroll-m-20 text-2xl font-semibold tracking-tight">
+            <Link2Icon />
+            Ny asako
+        </a>
+    </div>
 </template>
 
 <script setup lang="ts">
-import {Input} from './ui/input';
-import { Label } from './ui/label';
-import { Button } from './ui/button';
-import {Card,CardTitle, CardHeader,CardContent} from './ui/card';
+    import { Link2Icon } from 'lucide-vue-next';
 
+//
 </script>

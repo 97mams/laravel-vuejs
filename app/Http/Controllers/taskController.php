@@ -10,7 +10,9 @@ class taskController extends Controller
 {
     public function index()
     {
-        $task = task::all();
-        return Inertia::render('Task', $task);
+        $tasks = task::all();
+        return Inertia::render('Home', [
+            'tasks' => $tasks
+        ]);
     }
 }
