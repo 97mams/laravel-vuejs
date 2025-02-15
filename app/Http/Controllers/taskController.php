@@ -20,6 +20,8 @@ class taskController extends Controller
     public function store(StoreTaskRequest $request)
     {
         $data = $request->validated();
-        dd($data);
+        $data  += ['completed' => false];
+        task::create($data);
+        return redirect('/');
     }
 }
