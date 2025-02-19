@@ -4,10 +4,10 @@
             <Link2Icon />
             Ny asako
         </a>
-        <form action="" @submit.prevent="addTask" class="flex max-w-md ml-32 gap-2">
+        <!-- <form action="" @submit.prevent="addTask" class="flex max-w-md ml-32 gap-2">
             <Input placeholder="asa vaovao" type="text" v-model="form.content"/>
             <Button>Alefa</Button>
-        </form>
+        </form> -->
     </div>
 </template>
 

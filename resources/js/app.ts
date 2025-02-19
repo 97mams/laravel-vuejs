@@ -2,6 +2,7 @@ import { createApp, h } from 'vue'
 import type { DefineComponent } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3'
 import { createRouter, createWebHistory } from 'vue-router';
+import { routes } from './routes';
 
 const router = createRouter({
     history: createWebHistory(),
