@@ -15,21 +15,27 @@
 import Header from '@/components/Header.vue';
 import { Input } from '@/components/ui/input';
 import Task from '@/components/Task.vue';
-import { computed, defineProps, ref } from 'vue';
+import { computed, defineProps, onMounted, ref } from 'vue';
 import TaskCompleted from '@/components/TaskCompleted.vue';
 import { useForm } from '@inertiajs/vue3';
 // defineProps({
 //     tasks:Object
 // })
 
-const list = ref('null')
+const list = ref(null)
+const error = ref(null)
 
-computed(() => {
-    fetch('localhost:8000/api/task')
-    .then(data=> list.value = data.json())
+onMounted(()=> {
+    fetch('/api/task')
+    .then(respose => respose.json())
+    .then(data => {
+        list.value = data.data
+    })
+    .catch(error => error = true)
 })
 
 console.log(list);
+console.log(error);
 
 
 // const form = useForm({
