@@ -21,7 +21,12 @@ class taskController extends Controller
     {
         $data = $request->validated();
         $data  += ['completed' => false];
-        task::create($data);
-        return redirect('/');
+        return task::create($data);
+    }
+
+    public function completed()
+    {
+        $completdTask = task::all()->where('compled', true);
+        dd($completdTask);
     }
 }

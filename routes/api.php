@@ -8,6 +8,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
+Route::put('/task/{id}', [TaskController::class, 'store']);
 Route::get('/task', [TaskController::class, 'index']);
-
-Route::apiResource('/task', TaskController::class);
+Route::get('/task/completed', [TaskController::class, 'completed']);
