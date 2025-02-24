@@ -35,7 +35,7 @@ import Button from './ui/button/Button.vue';
     })
     
     const handleCompleted = (id:number) => {
-        fetch('/api/task/', {
+        fetch(`api/task/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 completed: true

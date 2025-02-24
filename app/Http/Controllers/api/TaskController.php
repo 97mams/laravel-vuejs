@@ -12,17 +12,19 @@ class TaskController extends Controller
 {
     public function index()
     {
-        return new TaskCollection(task::all());
+        return new TaskCollection(task::all()->where('completed', '=', 0));
         // return TaskResource::collection(task::all());
     }
 
     public function completed()
     {
-        return new TaskCollection(task::all()->where('completd', '==', true));
+        return new TaskCollection(task::query()->where('completed', '!==', 0));
     }
 
-    public function store(Request $request, task $task)
+    public function store(task $task)
     {
-        dd($task);
+        $task->completed = true;
+        $task->save();
+        return new TaskCollection($task);
     }
 }
