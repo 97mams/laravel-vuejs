@@ -8,6 +8,6 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::put('/task/{task}', [TaskController::class, 'store']);
+Route::put('/task/{task}', [TaskController::class, 'update']);
 Route::get('/task', [TaskController::class, 'index']);
 Route::get('/task/completed', [TaskController::class, 'completed']);

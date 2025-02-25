@@ -4,10 +4,7 @@
                 <Link class="text-primary/30"/>
                 Lisitriny asa rehetra
             </a>
-            <ul v-for="task in tasks.task">
-                <!-- <li :key="task.id">{{ task.content}}</li> -->
-            </ul>
-            <div v-for="task in tasks.task" class="flex flex-col overflow overflow-auto">
+            <div v-for="task in tasks" class="flex flex-col overflow overflow-auto">
                 <Card key="task.id" class="flex justify-between my-1 p-1">
                     <p>{{ task.content}}</p>
                     <div class="flex gap-2">
@@ -23,18 +20,25 @@
     </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import Card from './ui/card/Card.vue';
 import { Check } from 'lucide-vue-next';
 import { Link } from 'lucide-vue-next';
 import { Trash } from 'lucide-vue-next';
 import Button from './ui/button/Button.vue';
+import { computed } from 'vue';
 
-    const tasks = defineProps({
+    const props = defineProps({
         task: Object
     })
+
+    const tasks = computed(() => {
+        return props.task?.filter((task) => {
+           return  !task.completed 
+        })
+    })
     
-    const handleCompleted = (id:number) => {
+    const handleCompleted = (id) => {
         fetch(`api/task/${id}`, {
             method: 'PUT',
             body: JSON.stringify({

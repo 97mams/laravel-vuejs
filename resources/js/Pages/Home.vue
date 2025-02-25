@@ -7,7 +7,7 @@
         </form> -->
         <Task :task="list"  class="flex1"/>
         <div class="border border-r border-border h-screen"></div>
-        <TaskCompleted  class="flex1"/>
+        <TaskCompleted :task="list"  class="flex1"/>
     </div>
 </template>
 
@@ -18,6 +18,7 @@ import Task from '@/components/Task.vue';
 import { computed, defineProps, onMounted, ref } from 'vue';
 import TaskCompleted from '@/components/TaskCompleted.vue';
 import { useForm } from '@inertiajs/vue3';
+import { List } from 'lucide-vue-next';
 // defineProps({
 //     tasks:Object
 // })
@@ -31,11 +32,9 @@ onMounted(()=> {
     .then(data => {
         list.value = data.data
     })
-    .catch(error => error = true)
+    .catch(er => error.value = true)
 })
 
-console.log(list);
-console.log(error);
 
 
 // const form = useForm({
