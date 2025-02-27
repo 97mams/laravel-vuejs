@@ -4,10 +4,10 @@
             <Link2Icon />
             Ny asako
         </a>
-        <!-- <form action="" @submit.prevent="addTask" class="flex max-w-md ml-32 gap-2">
-            <Input placeholder="asa vaovao" type="text" v-model="form.content"/>
+        <form action="" @submit.prevent="submit" class="flex  ml-32 gap-2">
+            <Input placeholder="asa vaovao" type="text" v-model="newTask"/>
             <Button>Alefa</Button>
-        </form> -->
+        </form>
     </div>
 </template>
 
@@ -18,16 +18,36 @@ import { Button } from './ui/button';
 import { ref } from 'vue';
 import { useForm } from '@inertiajs/vue3';
 
-// const newTask = ref('')
+const newTask = ref('')
+
+const submit = async() => {
+    const f = await fetch('/api/task', {
+        method: "POST",
+        body: JSON.stringify({
+            content: newTask.value,
+        })
+    })
+    if(f.ok) {
+        alert('mety')
+    }
+}
+
 // const form = useForm({
 //     content: ''
 // })
-// const addTask = () => {
-//     form.clearErrors()
-//      form
-//     .post('/task',{ onSuccess: () => form.reset(), })
 
+// const submit = () => {
+//     form
+//     .post(
+//         '/task',
+//         {
+//             onSuccess: ()=> {
+//                 form.reset()
+//             }
+//         }
+//     )
 // }
+
     
 
 </script>

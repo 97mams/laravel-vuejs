@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\TaskRequest;
 use App\Http\Resources\TaskCollection;
 use App\Http\Resources\TaskResource;
 use App\Models\task;
@@ -14,6 +15,12 @@ class TaskController extends Controller
     {
         return new TaskCollection(task::all());
         // return TaskResource::collection(task::all());
+    }
+
+    public function store(Request $request)
+    {
+        $task = task::create($request->get);
+        return new TaskResource($task);
     }
 
     public function completed()
