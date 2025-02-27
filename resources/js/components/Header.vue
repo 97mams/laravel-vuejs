@@ -23,8 +23,9 @@ const newTask = ref('')
 const submit = async() => {
     const f = await fetch('/api/task', {
         method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-            content: newTask.value,
+            content: newTask.value
         })
     })
     if(f.ok) {

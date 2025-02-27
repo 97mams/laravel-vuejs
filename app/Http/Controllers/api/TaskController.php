@@ -20,8 +20,12 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $task = task::create($request->get);
-        return new TaskResource($task);
+        $task = new task();
+        $t = $task->create([
+            'content' => $request->input('content'),
+            'completed' => false
+        ]);
+        return new TaskResource($t);
     }
 
     public function update(Request $request, task $task)
