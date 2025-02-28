@@ -1,10 +1,11 @@
 <template>
-    <Header />
-    <div class="w-full h-screen flex  gap-4">
+    <Header  @todo="addTask(task)"/>
+    {{ list }}
+    <!-- <div class="w-full h-screen flex  gap-4">
         <Task :task="list"  class="flex1"/>
         <div class="border border-r border-border h-screen"></div>
         <TaskCompleted :task="list"  class="flex1"/>
-    </div>
+    </div> -->
 </template>
 
 <script setup>
@@ -19,6 +20,15 @@ import { Button } from '@/components/ui/button';
 
 const list = ref(null)
 const error = ref(null)
+
+const addTask = (task) => {
+    const todo = {
+        id: Date.now(),
+        content: task,
+        completed: false
+    }
+    list.value.push(todo)
+}
 
 onMounted(()=> {
     fetch('/api/task')
