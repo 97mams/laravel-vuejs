@@ -31,7 +31,7 @@ class TaskController extends Controller
     public function update(Request $request, task $task)
     {
         $task->update($request->all());
-        return new TaskCollection($task);
+        return new TaskResource($task);
     }
 
     public function remove(task $task)

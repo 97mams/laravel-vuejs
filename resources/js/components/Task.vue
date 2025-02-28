@@ -41,6 +41,7 @@ import { computed } from 'vue';
     const handleCompleted = (id) => {
         fetch(`api/task/${id}`, {
             method: 'PUT',
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
                 completed: true
             })
