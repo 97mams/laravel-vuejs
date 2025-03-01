@@ -5,10 +5,15 @@
             Ny asako
         </a>
         <form action="" @submit.prevent="submit" class="flex  ml-32 gap-2">
-            <Input placeholder="asa vaovao" type="text" v-model="todo"/>
-            <Button @click="emits('todo', todo)">Alefa</Button>
+            <Input placeholder="asa vaovao" type="text" v-model="newTask"/>
+            <Button>Alefa</Button>
         </form>
     </div>
+    <div class="w-full h-screen flex  gap-4">
+        <Task :task="tasks"  class="flex1"/>
+        <div class="border border-r border-border h-screen"></div>
+        <TaskCompleted :task="tasks"  class="flex1"/>
+    </div>  
 </template>
 
 <script setup>
@@ -16,41 +21,29 @@ import { Link2Icon } from 'lucide-vue-next';
 import { Input } from './ui/input';
 import { Button } from './ui/button';
 import { ref } from 'vue';
-import { useForm } from '@inertiajs/vue3';
+import Task from './Task.vue';
+import TaskCompleted from './TaskCompleted.vue';
+
+const porps = defineProps({
+    tasks:Object
+})
 
 const newTask = ref(null)
-const emits = defineEmits(['todo'])
-const todo = ref(null)
-// const submit = async() => {
-//     const f = await fetch('/api/task', {
-//         method: "POST",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify({
-//             content: newTask.value
-//         })
-//     })
-//     if(f.ok) {
-//         alert('mety')
-//     }
-//     todo.value = await f.json()
-// }
 
-// const form = useForm({
-//     content: ''
-// })
+const submit = async() => {
+    const f = await fetch('/api/task', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            content: newTask.value
+        })
+    })
+    if(f.ok) {
+        const task = await f.json()
+        porps.tasks.push(task.tasks)
+        newTask.value = ''
+    }
 
-// const submit = () => {
-//     form
-//     .post(
-//         '/task',
-//         {
-//             onSuccess: ()=> {
-//                 form.reset()
-//             }
-//         }
-//     )
-// }
-
-    
+}
 
 </script>

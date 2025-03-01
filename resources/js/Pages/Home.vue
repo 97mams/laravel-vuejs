@@ -1,34 +1,29 @@
 <template>
-    <Header  @todo="addTask(task)"/>
-    {{ list }}
-    <!-- <div class="w-full h-screen flex  gap-4">
-        <Task :task="list"  class="flex1"/>
-        <div class="border border-r border-border h-screen"></div>
-        <TaskCompleted :task="list"  class="flex1"/>
-    </div> -->
+    <div v-if="error">
+        <Card>
+            <CardHeader>
+                <CardTitle class="text-danger">
+                    Erreur
+                </CardTitle>
+            </CardHeader>
+            <CardContent>
+                Il y a une erreur !!!
+            </CardContent>
+        </Card>
+    </div>
+    <div v-else>
+        <Header  @todo="addTask(todo)" :tasks="list"/>
+    </div>
 </template>
 
 <script setup>
 import Header from '@/components/Header.vue';
-import { Input } from '@/components/ui/input';
-import Task from '@/components/Task.vue';
-import { computed, defineProps, onMounted, ref } from 'vue';
-import TaskCompleted from '@/components/TaskCompleted.vue';
-import { useForm } from '@inertiajs/vue3';
-import { Button } from '@/components/ui/button';
+import { onMounted, ref } from 'vue';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 
 const list = ref(null)
 const error = ref(null)
-
-const addTask = (task) => {
-    const todo = {
-        id: Date.now(),
-        content: task,
-        completed: false
-    }
-    list.value.push(todo)
-}
 
 onMounted(()=> {
     fetch('/api/task')
